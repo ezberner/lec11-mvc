@@ -55,6 +55,8 @@ export class Model implements Subject {
 
     this.currentPlayer = (this.currentPlayer+1) % 2; //toggle
 
+    this.notifyAll(); // added in class - let every know who has changed
+
     return true;
   }
 

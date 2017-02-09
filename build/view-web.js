@@ -1,9 +1,13 @@
 "use strict";
+var $ = require("jquery");
 var View = (function () {
     function View(game) {
         this.game = game;
         this.playerSymbols = [' ', 'X', 'O'];
     }
+    View.prototype.setController = function (ctrl) {
+        this.ctrl = ctrl;
+    };
     View.prototype.display = function () {
         var _this = this;
         console.log("displaying...");
@@ -50,6 +54,11 @@ var View = (function () {
     //callback for clicking
     View.prototype.handleClick = function (row, col) {
         console.log("You clicked", row, col);
+        this.ctrl.takeTurn(row, col);
+    };
+    // added this in class
+    View.prototype.notify = function () {
+        this.display();
     };
     return View;
 }());

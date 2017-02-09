@@ -41,6 +41,7 @@ var Model = (function () {
             (gb[2][0] == gb[1][1] && gb[1][1] == gb[0][2])))
             this.winner = this.currentPlayer;
         this.currentPlayer = (this.currentPlayer + 1) % 2; //toggle
+        this.notifyAll(); // added in class - let every know who has changed
         return true;
     };
     Model.prototype.getPiece = function (x, y) {

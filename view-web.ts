@@ -1,9 +1,17 @@
 import {Model} from './model';
-import {Controller} from './controller';
+import {Controller} from './controller-web'; // used to be just controller
+
+import * as $ from 'jquery';
 
 export class View {
   private playerSymbols = [' ','X','O'];
+  private ctrl:Controller;
+
   constructor(private game:Model){}
+
+  setController(ctrl:Controller) {
+    this.ctrl = ctrl;
+  }
 
   display() {
     console.log("displaying...");
@@ -49,6 +57,12 @@ export class View {
   //callback for clicking
   handleClick(row, col) {
     console.log("You clicked",row,col);
+    this.ctrl.takeTurn(row,col);
+  }
+
+  // added this in class
+  notify() {
+    this.display();
   }
 
 }
